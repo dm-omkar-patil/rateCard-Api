@@ -18,6 +18,7 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String consumerName;
+    @Column(unique = true, nullable = false)
     private long consumerNumber;
     private String address;
     private LocalDate invoiceDate;

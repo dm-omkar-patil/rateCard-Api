@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            font-size: 16px;
+            line-height: 24px;
+            color: #555;
+        }
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+        .invoice-box table tr td:nth-child(2) {
+            text-align: right;
+        }
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+        .invoice-box table tr.top table td.title {
+            font-size: 45px;
+            line-height: 45px;
+            color: #333;
+        }
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+        .invoice-box table tr.heading td {
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+        .invoice-box table tr.item td {
+            border-bottom: 1px solid #eee;
+        }
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+        .invoice-box table tr.total td:nth-child(2) {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+        <tr class="top">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td class="title">
+                            Invoice
+                        </td>
+                        <td>
+                            Invoice Date: <span th:text="${invoice.invoiceDate}"></span><br/>
+                            Invoice ID: <span th:text="${invoice.id}"></span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="information">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td>
+                            <b>Consumer Details</b><br/>
+                            Name: <span th:text="${invoice.consumerName}"></span><br/>
+                            Consumer Number: <span th:text="${invoice.consumerNumber}"></span><br/>
+                            Address: <span th:text="${invoice.address}"></span>, <span th:text="${invoice.city}"></span>, <span th:text="${invoice.state}"></span>, <span th:text="${invoice.zipCode}"></span><br/>
+                            Contact No: <span th:text="${invoice.contactNo}"></span><br/>
+                            Email: <span th:text="${invoice.consumerEmail}"></span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="heading">
+            <td>
+                Installation Details
+            </td>
+            <td>
+                Information
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>Connection Type</td>
+            <td><span th:text="${invoice.connectionType}"></span></td>
+        </tr>
+
+        <tr class="item">
+            <td>Installation Space</td>
+            <td><span th:text="${invoice.installationSpace}"></span></td>
+        </tr>
+
+        <tr class="item">
+            <td>Installation Type</td>
+            <td><span th:text="${invoice.installationType}"></span></td>
+        </tr>
+
+        <tr class="item last">
+            <td>Installation Size</td>
+            <td><span th:text="${invoice.installationSize}"></span></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
