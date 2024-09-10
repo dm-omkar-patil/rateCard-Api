@@ -77,44 +77,44 @@ public class InvoiceController {
     }
 
     //for generating pdf
-    @GetMapping("/generate-pdf")
-    public ResponseEntity<ByteArrayResource> generateInvoicePdf(
-            @RequestParam String consumerName,
-            @RequestParam Long consumerNumber,
-            @RequestParam String address,
-            @RequestParam String consumerEmail,
-            @RequestParam String contactNo,
-            @RequestParam String town,
-            @RequestParam String city,
-            @RequestParam String subDistrict,
-            @RequestParam String district,
-            @RequestParam String state,
-            @RequestParam String zipCode,
-            @RequestParam String connectionType,
-            @RequestParam String installationSpace,
-            @RequestParam String installationType,
-            @RequestParam String installationSize
-    ) throws IOException {
+//    @GetMapping("/generate-pdf")
+//    public ResponseEntity<ByteArrayResource> generateInvoicePdf(
+//            @RequestParam String consumerName,
+//            @RequestParam Long consumerNumber,
+//            @RequestParam String address,
+//            @RequestParam String consumerEmail,
+//            @RequestParam String contactNo,
+//            @RequestParam String town,
+//            @RequestParam String city,
+//            @RequestParam String subDistrict,
+//            @RequestParam String district,
+//            @RequestParam String state,
+//            @RequestParam String zipCode,
+//            @RequestParam String connectionType,
+//            @RequestParam String installationSpace,
+//            @RequestParam String installationType,
+//            @RequestParam String installationSize
+//    ) throws IOException {
         // Generate the invoice
-        Invoice invoice = invoiceService.generateInvoice(
-                consumerName, consumerNumber, address, consumerEmail, contactNo, town, city,
-                subDistrict, district, state, zipCode, connectionType, installationSpace, installationType, installationSize
-        );
+//        Invoice invoice = invoiceService.generateInvoice(
+//                consumerName, consumerNumber, address, consumerEmail, contactNo, town, city,
+//                subDistrict, district, state, zipCode, connectionType, installationSpace, installationType, installationSize
+//        );
 
         // Generate PDF from the invoice
-        byte[] pdfBytes = pdfService.generatePdf(invoice);
+//        byte[] pdfBytes = pdfService.generatePdf(invoice);
 
         // Prepare the response
-        ByteArrayResource resource = new ByteArrayResource(pdfBytes);
+//        ByteArrayResource resource = new ByteArrayResource(pdfBytes);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=invoice.pdf");
-        headers.add(HttpHeaders.CONTENT_TYPE, "application/pdf");
-
-        return ResponseEntity.ok()
-                .headers(headers)
-                .body(resource);
-    }
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=invoice.pdf");
+//        headers.add(HttpHeaders.CONTENT_TYPE, "application/pdf");
+//
+//        return ResponseEntity.ok()
+//                .headers(headers)
+//                .body(resource);
+//    }
 
     // New method to retrieve an invoice by consumer number
 //    @GetMapping("/{consumerNumber}")
