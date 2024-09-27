@@ -60,19 +60,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>com.itextpdf</groupId>-->
-<!--			<artifactId>itext7-core</artifactId>-->
-<!--			<version>7.1.17</version> &lt;!&ndash; Check for the latest version &ndash;&gt;-->
-<!--			<type>pom</type>-->
-<!--		</dependency>-->
-
-		<!-- Dependency for Apache PDFBox -->
-<!--		<dependency>-->
-<!--			<groupId>org.apache.pdfbox</groupId>-->
-<!--			<artifactId>pdfbox</artifactId>-->
-<!--			<version>2.0.29</version>-->
-<!--		</dependency>-->
 
 		<!-- Dependency for Thymeleaf if you want to design the PDF using HTML -->
 		<dependency>

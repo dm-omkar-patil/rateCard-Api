@@ -23,7 +23,5 @@ public class InvoiceRequest {
     private String installationSpace;
     private String installationType;
     private String installationSize;
-//    private LocalDate invoiceDate;
-    // Getters and setters
 }
 

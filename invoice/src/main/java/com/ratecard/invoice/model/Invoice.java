@@ -38,7 +38,6 @@ public class Invoice {
 
     @PrePersist
     protected void onUpdate() {
-        System.out.println(LocalDate.now());
         this.invoiceDate = LocalDate.now();
          // Automatically set to the current date
     }

@@ -1,13 +1,10 @@
 package com.ratecard.invoice.controllers;
 
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.ui.Model;
 import com.ratecard.invoice.DTO.InvoiceRequest;
 import com.ratecard.invoice.model.Invoice;
 import com.ratecard.invoice.services.InvoiceService;
-import com.ratecard.invoice.services.PdfService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -39,13 +36,8 @@ public class InvoiceController {
     @Autowired
     private InvoiceService invoiceService;
 
-    //For pdf service
-    @Autowired
-    private PdfService pdfService;
-
     @Autowired
     private SpringTemplateEngine templateEngine;
-
 
     //To generate or add the data
     @PostMapping("/generate")

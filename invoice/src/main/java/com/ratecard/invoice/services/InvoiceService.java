@@ -50,11 +50,6 @@ public class InvoiceService {
         return invoiceRepository.findAll();
     }
 
-    // New method to retrieve an invoice by consumer ID
-//    public Invoice getInvoiceByConsumerNumber(Long consumerNumber) {
-//        return invoiceRepository.findByConsumerNumber(consumerNumber);
-//    }
-
     public Optional<Invoice> getInvoiceByConsumerNumber(long consumerNumber) {
         return invoiceRepository.findByConsumerNumber(consumerNumber);
     }
