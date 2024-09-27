@@ -1,5 +1,6 @@
 package com.ratecard.invoice.controllers;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.ui.Model;
 import com.ratecard.invoice.DTO.InvoiceRequest;
 import com.ratecard.invoice.model.Invoice;
@@ -76,60 +77,9 @@ public class InvoiceController {
         return new ResponseEntity<>(invoices, HttpStatus.OK);
     }
 
-    //for generating pdf
-//    @GetMapping("/generate-pdf")
-//    public ResponseEntity<ByteArrayResource> generateInvoicePdf(
-//            @RequestParam String consumerName,
-//            @RequestParam Long consumerNumber,
-//            @RequestParam String address,
-//            @RequestParam String consumerEmail,
-//            @RequestParam String contactNo,
-//            @RequestParam String town,
-//            @RequestParam String city,
-//            @RequestParam String subDistrict,
-//            @RequestParam String district,
-//            @RequestParam String state,
-//            @RequestParam String zipCode,
-//            @RequestParam String connectionType,
-//            @RequestParam String installationSpace,
-//            @RequestParam String installationType,
-//            @RequestParam String installationSize
-//    ) throws IOException {
-        // Generate the invoice
-//        Invoice invoice = invoiceService.generateInvoice(
-//                consumerName, consumerNumber, address, consumerEmail, contactNo, town, city,
-//                subDistrict, district, state, zipCode, connectionType, installationSpace, installationType, installationSize
-//        );
-
-        // Generate PDF from the invoice
-//        byte[] pdfBytes = pdfService.generatePdf(invoice);
-
-        // Prepare the response
-//        ByteArrayResource resource = new ByteArrayResource(pdfBytes);
-
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=invoice.pdf");
-//        headers.add(HttpHeaders.CONTENT_TYPE, "application/pdf");
-//
-//        return ResponseEntity.ok()
-//                .headers(headers)
-//                .body(resource);
-//    }
-
-    // New method to retrieve an invoice by consumer number
-//    @GetMapping("/{consumerNumber}")
-//    public ResponseEntity<Invoice> getInvoiceByConsumerNumber(@PathVariable Long consumerNumber) {
-//        Invoice invoice = invoiceService.getInvoiceByConsumerNumber(consumerNumber);
-//        if (invoice != null) {
-//            return new ResponseEntity<>(invoice, HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
-
 
     @GetMapping("/invoice/pdf/{consumerNumber}")
-    public ResponseEntity<InputStreamResource> generateInvoicePdf(@PathVariable long consumerNumber, Model model) {
+    public ResponseEntity<InputStreamResource> generateInvoicePdf(@PathVariable long consumerNumber, Model model) throws IOException {
         Optional<Invoice> optionalInvoice = invoiceService.getInvoiceByConsumerNumber(consumerNumber);
         if (optionalInvoice.isPresent()) {
             Invoice invoice = optionalInvoice.get();
@@ -142,6 +92,7 @@ public class InvoiceController {
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ITextRenderer renderer = new ITextRenderer();
+
             renderer.setDocumentFromString(htmlContent);
             renderer.layout();
             renderer.createPDF(outputStream);

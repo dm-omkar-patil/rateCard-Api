@@ -26,7 +26,6 @@ public class InvoiceService {
         invoice.setConsumerName(consumerName);
         invoice.setConsumerNumber(consumerNumber);
         invoice.setAddress(address);
-        invoice.setInvoiceDate(LocalDate.now());
 
         invoice.setConsumerEmail(consumerEmail);
         invoice.setContactNo(contactNo);
@@ -40,6 +39,9 @@ public class InvoiceService {
         invoice.setInstallationSpace(installationSpace);
         invoice.setInstallationType(installationType);
         invoice.setInstallationSize(installationSize);
+
+        // Set the current date
+        invoice.setInvoiceDate(LocalDate.now());
 
         return invoiceRepository.save(invoice);
     }

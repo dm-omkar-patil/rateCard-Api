@@ -37,7 +37,8 @@ public class Invoice {
     private String installationSize;
 
     @PrePersist
-    protected void onCreate() {
+    protected void onUpdate() {
+        System.out.println(LocalDate.now());
         this.invoiceDate = LocalDate.now();
          // Automatically set to the current date
     }

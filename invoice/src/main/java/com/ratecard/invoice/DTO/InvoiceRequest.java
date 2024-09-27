@@ -3,6 +3,8 @@ package com.ratecard.invoice.DTO;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 public class InvoiceRequest {
@@ -21,7 +23,7 @@ public class InvoiceRequest {
     private String installationSpace;
     private String installationType;
     private String installationSize;
-
+//    private LocalDate invoiceDate;
     // Getters and setters
 }
 
