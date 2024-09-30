@@ -39,27 +39,9 @@ public class InvoiceController {
     @Autowired
     private SpringTemplateEngine templateEngine;
 
-    //To generate or add the data
     @PostMapping("/generate")
-    public ResponseEntity<Invoice> generateInvoice(@RequestBody InvoiceRequest request) {
-        Invoice invoice = invoiceService.generateInvoice(
-                request.getConsumerName(),
-                request.getConsumerNumber(),
-                request.getAddress(),
-                request.getConsumerEmail(),
-                request.getContactNo(),
-                request.getTown(),
-                request.getCity(),
-                request.getSubDistrict(),
-                request.getDistrict(),
-                request.getState(),
-                request.getZipCode(),
-                request.getConnectionType(),
-                request.getInstallationSpace(),
-                request.getInstallationType(),
-                request.getInstallationSize()
-        );
-        return new ResponseEntity<>(invoice, HttpStatus.CREATED);
+    public Invoice generateInvoice(@RequestBody Invoice invoice) {
+        return invoiceService.generateInvoice(invoice);
     }
 
     //for all data
